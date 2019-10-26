@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BackEndApi.Models;
+using BackEndApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,12 @@ namespace BackEndApi.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private readonly INotificationService _notificationService;
+
+        public AccountController(INotificationService notificationService)
+        {
+            _notificationService = notificationService;
+        }
 
         [HttpPost("Authenticate")]
         [AllowAnonymous]
@@ -30,7 +37,7 @@ namespace BackEndApi.Controllers
                     };
 
             var symmetricSecurityKey = new SymmetricSecurityKey(
-                System.Text.Encoding.UTF8.GetBytes("TokenKey")
+                System.Text.Encoding.UTF8.GetBytes("YouCannotAlterTokenIfYouCannotHoldThisVeryLongKey")
                 );
             var signingCredentials = new SigningCredentials(
                 symmetricSecurityKey, SecurityAlgorithms.HmacSha256
@@ -47,6 +54,31 @@ namespace BackEndApi.Controllers
 
             return Ok(token);
         }
+        
+
+        [AllowAnonymous]
+        [HttpPost("newCodes")]
+        public async Task<IActionResult> CreateCodes([FromBody] CodesDTO codes)
+        {
+            var random = new Random();
+
+            var emailcode = random.Next(0, 999999).ToString("D6");
+            var smscode = random.Next(0, 999999).ToString("D6");
+            codes.EmailCode = emailcode;
+            codes.CellphoneCode = smscode;
+
+            //var sendNotification = Task.Run(new Action(() => _notificationService.SendNotification("CODES_GENERATED", user, loanRequest)));
+            var sendNotification = await _notificationService.SendNotificationAsync("CODES_GENERATED", codes);
+
+            return Ok(new
+            {
+                Message = "Revisa tu correo y tu celular e ingresa los códigos que te enviamos. Algunas veces el correo llega a spam",
+                ShowMessage = true,
+            });
+
+        }
 
     }
+
+
 }
