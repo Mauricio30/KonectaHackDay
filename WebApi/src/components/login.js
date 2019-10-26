@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Form from './form'
 
 class login extends React.Component {
     constructor(props){
@@ -11,7 +12,8 @@ class login extends React.Component {
         username:'',
         isLogin:true,
         loginmessage:'',
-        password:''
+        password:'',
+        isOpen: false
         }
        }
 
@@ -39,32 +41,37 @@ class login extends React.Component {
 
       render() {
           return (
-            <div>
-              <MuiThemeProvider>
-                <div>
-                <AppBar
-                   title="Login"
-                 />
-                 <TextField
-                   hintText="Enter your Username"
-                   floatingLabelText="Username"
-                   onChange = {(event,newValue) => this.setState({username:newValue})}
-                   />
-                 <br/>
-                   <TextField
-                     type="password"
-                     hintText="Enter your Password"
-                     floatingLabelText="Password"
-                     onChange = {(event,newValue) => this.setState({password:newValue})}
-                     />
-                   <br/>
-                   <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-                   <br/>
-                   <RaisedButton label="Register" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-                   <br/>
-                   {this.state.loginmessage}
-               </div>
-               </MuiThemeProvider>
+            <div style={{justifyContent: 'center', display: 'flex'}}>
+               <MuiThemeProvider>
+
+               {this.state.isOpen?
+               <Form/>:
+               <div>
+               <AppBar
+                  title="Login"
+                />
+                <TextField
+                  hintText="Enter your Username"
+                  floatingLabelText="Username"
+                  onChange = {(event,newValue) => this.setState({username:newValue})}
+                  />
+                <br/>
+                  <TextField
+                    type="password"
+                    hintText="Enter your Password"
+                    floatingLabelText="Password"
+                    onChange = {(event,newValue) => this.setState({password:newValue})}
+                    />
+                  <br/>
+                  <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+                  <br/>
+
+                  <br/>
+                  {this.state.loginmessage}
+              </div>
+              }
+              <RaisedButton label={this.state.isOpen?"Iniciar sesión":"Registrarse"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
+              </MuiThemeProvider>
             </div>
           );
         }

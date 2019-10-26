@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './thundercats.gif';
 import './App.css';
 import Login from './components/login';
-//import responsiveDialog from './components/ResponsiveDialog';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 

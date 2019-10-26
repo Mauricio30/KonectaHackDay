@@ -9,6 +9,7 @@ import eLocale from "date-fns/locale/es";
 import {MuiThemeProvider,  createMuiTheme } from "@material-ui/core";
 
 
+
 class Form extends React.Component{
     state={
         name : '',
@@ -60,7 +61,7 @@ class Form extends React.Component{
             
           });
         return (
-            <div style={{display:'flex',  justifyContent:'center', flexDirection: 'column' ,flexWrap:'wrap', marginTop:'0px'}}>         
+            <div style={{width: '400px', display:'flex',  justifyContent:'center', flexDirection: 'column' ,flexWrap:'wrap', marginTop:'0px'}}>         
                 <div>
                 <Paper rounded={false} zDepth={0} className='PaperStyle'>
                         <h3>Formulario Registro</h3>

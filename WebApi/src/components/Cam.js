@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
-import 'react-html5-camera-photo/build/css/index.css';
+//import 'react-html5-camera-photo/build/css/index.css';
 import PropTypes from 'prop-types';
 import FlatButton   from 'material-ui/FlatButton';
-import * as constants from '../../../hoc/Constants';
+//import * as constants from 'Constants';
 
 function hasGetUserMedia() {
   return !!(
@@ -356,7 +356,7 @@ class Webcam extends Component {
 
     const FlatButtonLabel         = {
       borderRadius              : '100px', 
-      fontFamily                : constants.FontFamily2,
+      //fontFamily                : constants.FontFamily2,
       fontWeight                : '300',
       textTransform             : 'initial',
       fontSize                  : '12px',
@@ -366,16 +366,16 @@ class Webcam extends Component {
     
     const FlatButtonLabelStyle  = {
       ...FlatButtonLabel,
-      color                     : constants.colorBlue1,
+      //color                     : constants.colorBlue1,
     }
 
     const FButton = (
       <FlatButton
-      labelStyle        = {{...FlatButtonLabelStyle, alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:constants.colorWhite, fontStyle: 'italic'}}
-      hoverColor        = {constants.colorBlue2}
-      backgroundColor   = {constants.colorBlue1}
+      labelStyle        = {{...FlatButtonLabelStyle, alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:'#000000', fontStyle: 'italic'}}
+      //hoverColor        = {constants.colorBlue2}
+      //backgroundColor   = {constants.colorBlue1}
       onClick = {this.captureclose}
-      rippleColor       = {constants.colorGreen1}
+      //rippleColor       = {constants.colorGreen1}
       primary           = {true}
       label             = {'Tomar foto'}
       />
