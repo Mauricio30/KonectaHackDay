@@ -3,7 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import Form from './form'
+import Form from './form';
+import WebcamResponsive from './WebcamResponsiveDialog';
 
 class login extends React.Component {
     constructor(props){
@@ -14,10 +15,19 @@ class login extends React.Component {
         loginmessage:'',
         loginmessageregister:'',
         password:'',
+<<<<<<< HEAD
         nombre:'',
         isOpen: false
+=======
+        isOpen: false,
+        closed: false,
+        typecapture: 'toma1'
+>>>>>>> 5d3ac79270d7841a3af4feb35451788435f1f369
         }
        }
+handleClose=()=>{
+this.setState({closed: false})
+}
 
        handleClick(event){
         var loginmessage;
@@ -72,7 +82,7 @@ class login extends React.Component {
           return (
             <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                <MuiThemeProvider>
-
+               <WebcamResponsive {...this.props} handleClose={this.handleClose} closed={this.state.closed} typecapture={this.state.typecapture}/>
                {this.state.isOpen?
                            <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                            <Form/></div>:
@@ -99,7 +109,11 @@ class login extends React.Component {
               </div>
               }
                   <br/>
+<<<<<<< HEAD
                   <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+=======
+                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen, closed: true})}/>
+>>>>>>> 5d3ac79270d7841a3af4feb35451788435f1f369
                   <br/>
               </MuiThemeProvider>
             </div>

@@ -310,17 +310,14 @@ class Webcam extends Component {
     Webcam.userMediaRequested = true;
   }
   captureclose = () => {
-    //console.log(this.getScreenshot());
-    // if(this.props.typecapture === 'toma1'){
-    //   const imageSrc1 = this.getScreenshot();
-    //   localStorage.setItem('screenshots1',imageSrc1);
-    // }else if(this.props.typecapture === 'toma2'){
-    //     const imageSrc2 = this.getScreenshot();
-    //     localStorage.setItem('screenshots2',imageSrc2);
-    // }else if(this.props.typecapture === 'toma3'){
-    //     const imageSrc3 = this.getScreenshot();
-    //     localStorage.setItem('screenshots3',imageSrc3);
-    // }
+    console.log(this.getScreenshot());
+    if(this.props.typecapture === 'toma1'){
+      const imageSrc1 = this.getScreenshot();
+      localStorage.setItem('screenshots1',imageSrc1);
+    }else if(this.props.typecapture === 'toma2'){
+        const imageSrc2 = this.getScreenshot();
+        localStorage.setItem('screenshots2',imageSrc2);
+    }
 
     this.props.previewImage(this.getScreenshot());
     this.props.cerrarcam();

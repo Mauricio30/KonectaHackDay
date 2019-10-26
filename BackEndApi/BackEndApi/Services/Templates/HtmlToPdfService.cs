@@ -55,14 +55,7 @@ namespace BackEndApi.Services.Templates
                     new ObjectSettings()
                     {
                         HtmlContent = htmlDocumentContent,
-                        HeaderSettings = showHeader ? (new HeaderSettings(){
-                            FontSize = 9,
-                            //Right = "Page [page] of [toPage]",
-                            Line = false,
-                            Spacing = 2.812,
-                            HtmUrl = "https://api.micredi.com.co/html/pdfDocumentHeader.html",
-                            FontName = "Muli"
-                        }) : null,
+                       
 
                     }
                 }
