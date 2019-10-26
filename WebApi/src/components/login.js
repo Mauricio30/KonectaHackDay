@@ -41,7 +41,7 @@ class login extends React.Component {
 
       render() {
           return (
-            <div style={{justifyContent: 'center', display: 'flex'}}>
+            <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                <MuiThemeProvider>
 
                {this.state.isOpen?
@@ -62,15 +62,15 @@ class login extends React.Component {
                     floatingLabelText="Password"
                     onChange = {(event,newValue) => this.setState({password:newValue})}
                     />
-                  <br/>
-                  <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-                  <br/>
+
 
                   <br/>
                   {this.state.loginmessage}
               </div>
               }
-              <RaisedButton label={this.state.isOpen?"Iniciar sesión":"Registrarse"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
+                  <br/>
+                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
+                  <br/>
               </MuiThemeProvider>
             </div>
           );
