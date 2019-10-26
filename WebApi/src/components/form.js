@@ -191,8 +191,8 @@ class Form extends React.Component{
                                                 <TextField
                                 id                  = 'email'
                                 type = 'email'
-                                onChange            = {(event,)=>this.onAutoCompleteChangeHandler(event.target.value, 'ROB')}
-                                value               = {this.state.document}
+                                onChange            = {(event,)=>this.setState({email: event.target.value})}
+                                value               = {this.state.email}
                                 floatingLabelStyle  = {{ top: '20px'}}
                                 inputStyle          = {{ marginTop: '4px'}}
                                 style               = {{height: '50px'}}
