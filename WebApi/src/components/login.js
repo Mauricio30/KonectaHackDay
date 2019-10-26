@@ -18,17 +18,23 @@ class login extends React.Component {
        handleClick(event){
          console.log("event",this.state);
 
-         var loginmessage;
-      var loginscreen=[];
-      loginmessage = "Already registered.Go to Login";
-      this.setState({
-                     loginscreen:loginscreen,
-                     loginmessage:loginmessage,
-                     buttonLabel:"Login",
-                     isLogin:false
-                   })
-   
-        
+            var loginmessage;
+            var loginscreen=[];
+            loginmessage = "Already registered.Go to Login";
+            this.setState({
+                            loginscreen:loginscreen,
+                            loginmessage:loginmessage,
+                            buttonLabel:"Login",
+                            isLogin:false
+                        })
+
+            fetch('http://example.com/movies.json')
+                        .then(function(response) {
+                          return response.json();
+                        })
+                        .then(function(myJson) {
+                          console.log(myJson);
+                        });            
       }
 
       render() {
