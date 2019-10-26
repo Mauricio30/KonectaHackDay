@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Form from './form'
 
 class login extends React.Component {
     constructor(props){
@@ -11,7 +12,8 @@ class login extends React.Component {
         username:'',
         isLogin:true,
         loginmessage:'',
-        password:''
+        password:'',
+        isOpen: false
         }
        }
 
@@ -60,11 +62,13 @@ class login extends React.Component {
                    <br/>
                    <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
                    <br/>
-                   <RaisedButton label="Register" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+                   <RaisedButton label="Register" primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
                    <br/>
                    {this.state.loginmessage}
                </div>
                </MuiThemeProvider>
+               {this.state.isOpen?
+               <Form/>:null}
             </div>
           );
         }
