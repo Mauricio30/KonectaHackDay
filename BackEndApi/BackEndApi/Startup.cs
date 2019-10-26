@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackEndApi.DAL;
+using BackEndApi.Services.Templates;
 using BackEndApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -31,7 +34,13 @@ namespace BackEndApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDBContext>(opt =>
+                opt.UseInMemoryDatabase("AppDBContext"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<ITemplateService, TemplateService>();
+            // Add HtmlToPdf service to DI
+            services.AddScoped<IHtmlToPdfService, HtmlToPdfService>();
 
             services.AddSingleton<IConfigurationRoot>(provider => Configuration);
 

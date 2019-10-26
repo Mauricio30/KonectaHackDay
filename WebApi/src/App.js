@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './thundercats.gif';
 import './App.css';
+import Login from './components/login';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
+}));
 
 function App() {
+
+    const classes = useStyles();
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>THUNDERHACKS RECONOCIMIENTO DE IDENTIDAD Y ENVIO DE CONTRATO</p>
       </header>
+      <Login/>
     </div>
   );
 }
