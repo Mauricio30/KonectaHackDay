@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 namespace BackEndApi
 {
@@ -37,6 +39,9 @@ namespace BackEndApi
             services.AddDbContext<AppDBContext>(opt =>
                 opt.UseInMemoryDatabase("AppDBContext"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Add converter to DI
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             services.AddScoped<ITemplateService, TemplateService>();
             // Add HtmlToPdf service to DI

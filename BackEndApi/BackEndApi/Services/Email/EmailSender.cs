@@ -4,12 +4,14 @@ using System;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Threading.Tasks;
+using BackEndApi.Services.Email;
+using System.Collections.Generic;
 
 namespace BackEndApi.Services
 {
     public interface IEmailSender
     {
-        Task<bool> SendEmailAsync(string email, string subject, string message);
+        Task<bool> SendEmailAsync(string email, string subject, string message, List<AttachmentFile> attachments);
     }
 
     public class EmailSender : IEmailSender
@@ -37,7 +39,7 @@ namespace BackEndApi.Services
         /// <param name="message"></param>
         /// <param name="attachments"></param>
         /// <param name="name"></param>
-        public async Task<bool> SendEmailAsync(string email, string subject, string message)
+        public async Task<bool> SendEmailAsync(string email, string subject, string message, List<AttachmentFile> attachments)
         {
             try
             {
@@ -60,6 +62,14 @@ namespace BackEndApi.Services
 
                 // Set the html-text version of the message text
                 builder.HtmlBody = message;
+
+                if (attachments != null)
+                {
+                    foreach (AttachmentFile attachment in attachments)
+                    {
+                        builder.Attachments.Add(attachment.Name, attachment.Data);
+                    }
+                }
 
                 // Set the message body
                 mymessage.Body = builder.ToMessageBody();

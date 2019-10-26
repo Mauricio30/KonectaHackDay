@@ -7,5 +7,7 @@
 
         public string EmailCode { get; set; }
         public string CellphoneCode { get; set; }
+
+        public bool Confirmed { get; set; }
     }
 }

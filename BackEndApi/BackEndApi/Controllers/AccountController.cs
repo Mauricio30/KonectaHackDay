@@ -73,6 +73,23 @@ namespace BackEndApi.Controllers
             return Ok(new
             {
                 Message = "Revisa tu correo y tu celular e ingresa los códigos que te enviamos. Algunas veces el correo llega a spam",
+                Data = codes,
+                ShowMessage = true,
+            });
+
+        }
+
+        [AllowAnonymous]
+        [HttpPost("ConfirmCodes")]
+        public async Task<IActionResult> ConfirmCodes([FromBody] CodesDTO codes)
+        {
+            
+            //var sendNotification = Task.Run(new Action(() => _notificationService.SendNotification("CODES_GENERATED", user, loanRequest)));
+            var sendNotification = await _notificationService.SendNotificationAsync("CONFIRM_CODES", codes);
+
+            return Ok(new
+            {
+                Message = "Codigos confirmados satisfactoriamente",
                 ShowMessage = true,
             });
 
