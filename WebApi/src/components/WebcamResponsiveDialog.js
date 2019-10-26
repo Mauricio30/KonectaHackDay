@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import * as constants from '../../../hoc/Constants';
+import * as constants from '. /Constants';
 import FlatButton   from 'material-ui/FlatButton';
-import BGAyuda               from '../../../Images/ayudacambloqueada.jpg';
-import marco_cedula          from '../../../Images/marco_cedula.png';
-import marco_cedula2         from '../../../Images/marco_cedula2.png';
-import sugerencia_pantalla   from '../../../Images/cambiopantalla.png';
+import BGAyuda               from '../assets/ayudacambloqueada.jpg';
+import marco_cedula          from '../assets/marco_cedula.png';
+import marco_cedula2         from '../assets/marco_cedula2.png';
+import sugerencia_pantalla   from '../assets/cambiopantalla.png';
 import Webcam       from './Cam';
 //import Webcam from "react-webcam";
 
