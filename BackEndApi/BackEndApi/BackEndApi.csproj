@@ -5,9 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="MimeKit" Version="2.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="encrypt2">
+      <HintPath>encrypt2.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
