@@ -16,6 +16,8 @@ class Form extends React.Component{
         lastName: '',
         bDate: new Date(),
         phone: '',
+        dob: '',
+        expiration: '',
         email: '',
         document: '',
         iDate: '',
@@ -23,6 +25,9 @@ class Form extends React.Component{
         TodayDate: new Date()
     }
     
+    handleClick(event){
+        alert(event)
+    }
     dobErrorChangeHandler=(Origin)=>{        
 
         if(this.state.bDate===''){
@@ -61,10 +66,10 @@ class Form extends React.Component{
             
           });
         return (
-            <div style={{width: '400px', display:'flex',  justifyContent:'center', flexDirection: 'column' ,flexWrap:'wrap', marginTop:'0px'}}>         
+            <div style={{width: '50%', margin:'120px', marginLeft:'120px', marginRight:'12px',display:'flex',  justifyContent:'center', flexDirection: 'column' ,flexWrap:'wrap', marginTop:'0px'}}>         
                 <div>
                 <Paper rounded={false} zDepth={0} className='PaperStyle'>
-                        <h3>Formulario Registro</h3>
+                        <h3>Formulario Registro Cliente y envio de contrato</h3>
 
                         <div style={{display:this.props.disabledEditing?'flex':'none'}}>
 
@@ -80,7 +85,7 @@ class Form extends React.Component{
                         <TextField
                             autoFocus           = {true}
                             id                  = 'Name'
-                            onChange            = {(event)=>this.onInputChangeHandler(event)}
+                            onChange = {(event,newValue) => this.setState({name:newValue})}
                             value               = {this.state.name}
                             disabled            = {this.state.disabledEditing_personal}
                             floatingLabelStyle  = {{color: 'black', top: '20px'}}
@@ -96,7 +101,7 @@ class Form extends React.Component{
                         <TextField
                             autoFocus           = {true}
                             id                  = 'lastName'
-                            onChange            = {(event)=>this.onInputChangeHandler(event)}
+                            onChange = {(event,newValue) => this.setState({lastName:newValue})}
                             value               = {this.state.lastName}
                             floatingLabelStyle  = {{ top: '20px'}}
                             inputStyle          = {{ marginTop: '4px'}}
@@ -117,8 +122,8 @@ class Form extends React.Component{
                                     id      = 'DOB'
                                     margin  =   "normal"
                                     label   =   'Fecha de nacimiento'
-                                    value   = {new Date()}
-                                    onChange= {(event, date, values)=> this.props.onInputChangeHandler(event, 'DOB')}
+                                    value   = {this.state.dob === ""? new Date:this.state.dob}
+                                    onChange= {(event, date, values)=> this.setState({dob:date})}
                                     format  =   {	
                                         'dd MMMM, yyyy'}
                                     okLabel ="Aceptar" cancelLabel="Cancelar"
@@ -134,7 +139,7 @@ class Form extends React.Component{
 
                         <TextField
                                 id                  = 'document'
-                                onChange            = {(event,)=>this.onAutoCompleteChangeHandler(event.target.value, 'ROB')}
+                                onChange = {(event,newValue) => this.setState({document:newValue})}
                                 value               = {this.state.document}
                                 floatingLabelStyle  = {{ top: '20px'}}
                                 inputStyle          = {{ marginTop: '4px'}}
@@ -156,8 +161,8 @@ class Form extends React.Component{
                                     id      = 'DOB'
                                     margin  =   "normal"
                                     label   =   'Fecha de expedición'
-                                    value   = {new Date()}
-                                    onChange= {(event, date, values)=> this.props.onInputChangeHandler(event, 'DOB')}
+                                    value   = {this.state.expiration === ""? new Date:this.state.expiration}
+                                    onChange= {(event, date, values)=> this.setState({expiration:date})}
                                     format  =   {	
                                         'dd MMMM, yyyy'}
                                     okLabel ="Aceptar" cancelLabel="Cancelar"
@@ -172,7 +177,7 @@ class Form extends React.Component{
 
 <TextField
                                 id                  = 'phone'
-                                onChange            = {(event,)=>this.onAutoCompleteChangeHandler(event.target.value, 'ROB')}
+                                onChange = {(event,newValue) => this.setState({phone:newValue})}
                                 value               = {this.state.document}
                                 floatingLabelStyle  = {{ top: '20px'}}
                                 inputStyle          = {{ marginTop: '4px'}}

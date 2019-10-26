@@ -12,31 +12,60 @@ class login extends React.Component {
         username:'',
         isLogin:true,
         loginmessage:'',
+        loginmessageregister:'',
         password:'',
+        nombre:'',
         isOpen: false
         }
        }
 
        handleClick(event){
-         console.log("event",this.state);
+        var loginmessage;
+        if(this.state.isOpen){
+            if(this.state.nombre === ""){
+                alert("El nombre es obligatorio");
+            }
+        }else{
+          
+            console.log("event",this.state);
 
-            var loginmessage;
-            var loginscreen=[];
-            loginmessage = "Already registered.Go to Login";
-            this.setState({
-                            loginscreen:loginscreen,
-                            loginmessage:loginmessage,
-                            buttonLabel:"Login",
-                            isLogin:false
-                        })
+               if(this.state.username === ""){
+                   loginmessage = "El usuario es obligatorio";
+               }else if(this.state.password === ""){
+                   loginmessage = "La contraseña es obligatoria";
+               }else{
+                   setTimeout(this.setState({isOpen: !this.state.isOpen}), 13000, {position:1});
+               }
+               var loginscreen=[];
+               this.setState({
+                               loginscreen:loginscreen,
+                               loginmessage:loginmessage,
+                               buttonLabel:"Login",
+                               isLogin:false
+                           })
+        }
+         
 
-            fetch('http://example.com/movies.json')
-                        .then(function(response) {
-                          return response.json();
-                        })
-                        .then(function(myJson) {
-                          console.log(myJson);
-                        });            
+            // 
+            // 
+            // loginmessage = "Already registered.Go to Login";
+            // this.setState({
+            //                 loginscreen:loginscreen,
+            //                 loginmessage:loginmessage,
+            //                 buttonLabel:"Login",
+            //                 isLogin:false
+            //             })
+
+            // fetch('http://example.com/movies.json')
+            //             .then(function(response) {
+            //               return response.json();
+            //             })
+            //             .then(function(myJson) {
+            //               console.log(myJson);
+            //             });   
+
+            // setTimeout(this.setState({isOpen: !this.state.isOpen}), 3000);
+            // //this.setState({isOpen: !this.state.isOpen} ); 
       }
 
       render() {
@@ -45,7 +74,8 @@ class login extends React.Component {
                <MuiThemeProvider>
 
                {this.state.isOpen?
-               <Form/>:
+                           <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
+                           <Form/></div>:
                <div>
                <AppBar
                   title="Login"
@@ -69,7 +99,7 @@ class login extends React.Component {
               </div>
               }
                   <br/>
-                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
+                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
                   <br/>
               </MuiThemeProvider>
             </div>
