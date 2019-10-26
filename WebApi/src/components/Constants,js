@@ -1,0 +1,485 @@
+ /* Route to server */
+export const RouteToServer  = process.env.REACT_APP_RouteToServer;
+export const ImagesToApp    = '';
+export const TitleAPP       = process.env.REACT_APP_TITLE;
+export const ResourseToApp  = window.location.hostname.replace("www.","").replace("prestamos.","").replace("micredito.","").replace("creditofacil.","");
+export const urlCache = 'sw-precache-v3-sw-precache-webpack-plugin-'+window.location.origin+'/';
+
+export const globalData = localStorage.getItem("ApplicationParameters")===null?window.location.reload():JSON.parse(localStorage.getItem("ApplicationParameters"));
+// console.log(localStorage.getItem("ApplicationParameters"), globalData);
+
+// export const globalData = {  
+//   primaryName:   'MI',
+//   secondaryName: 'CREDI',
+//   primaryColor:  '#2DD47F',
+//   secondaryColor: '#393745',
+//   TitlePage: 'Crédito fácil con MICREDI',
+//   defaultProductId: 27,
+//   originator:    'BANL'
+// }
+
+export const TelefonoContacto  = '';
+export const DireccionContacto = {parte1:'CL 2 # 20-50 OF 1103',parte2:'Edificio Q-Office', parte3:'Medellín'};
+export const CorreoContacto    = TitleAPP === 'MICREDI' ? 'info@'+TitleAPP.toLowerCase()+'.com.co' : 'info@'+TitleAPP.toLowerCase()+'.com';
+
+/* In line styling colors */
+export const colorRed        = '#FF5F64';
+export const colorBlue1      = '#1D7CFF';
+export const colorBlue2      = '#5CA4FA';
+export const colorBlue3      = '#1860c4';
+export const colorGreen1     = '#2DD47F';
+export const colorGreen2     = '#3CC379';
+export const colorGray1      = '#393745';
+export const colorGray2      = '#999999';
+export const colorWhite      = '#FFFFFF';
+export const colorYellow     = '#FFdb30';
+export const lightGray       = '#F7F7F7';
+export const mediumGray      = '#AFAFAF';
+
+  /* In line styling font sizes */
+export const FontSizeVerySmall = '12px';
+export const FontSizeSmall   = '16px';
+export const FontSizeMedium  = '20px';
+export const FontSizeAuxBig  = '25px';
+export const FontSizeBig     = '30px';
+export const FontSizeBigAux  = '35px';
+export const FontSizeLarge   = '40px';
+export const FontSizeAuxHuge = '45px';
+export const FontSizeHuge    = '50px';
+export const FontSizeHugeAux = '55px';
+export const FontSizeXXL     = '60px';
+
+  /* Font families */
+export const FontFamily1     ='Kanit';
+export const FontFamily2     ='Muli';
+  
+  /* Label style */
+export const LabelStyle={
+    textTransform : 'initial',
+    fontFamily    : FontFamily2,
+    fontSize      : FontSizeSmall,
+  };
+  
+  export const dataPickerCss = {
+    palette: {
+      primary: {
+          main: colorBlue2,
+          light:  colorBlue2,
+          dark: colorBlue1,
+      },
+      secondary: {
+          main: colorGray2,
+          light:  colorBlue2,
+          dark: colorBlue1,
+      },
+  },
+  overrides: {
+      MuiFormControl: {
+          marginNormal: {
+              marginTop: '0px',
+              marginBottom: '0px'
+          },
+          root:{
+              minWidth: '260px'
+          } 
+      },
+      MuiFormLabel:{
+          root:{
+              fontSize: FontSizeSmall,
+              fontFamily: FontFamily2,
+              textTransform: 'unset',
+              color: 'rgb(175, 175, 175)',
+          } 
+      },
+      MuiInput:{
+          root:{
+              fontSize: FontSizeSmall,
+              fontFamily: FontFamily2,
+              color: colorGray2
+          },
+          underline: {
+              color: colorGray2,
+              '&:before': {
+                  borderBottom: '1px solid rgb(224, 224, 224)',
+              },
+              "&&&&:hover:before": {
+                  borderBottom: "2px solid rgb(224, 224, 224)"
+                }
+          },      
+      },
+    MuiPickersToolbar: {
+      toolbar: {
+        backgroundColor: colorBlue1,
+        fontSize: FontSizeAuxBig,
+        fontFamily: FontFamily1
+      },
+    },
+    MuiPickersMonthSelection: {
+      container: {
+          fontFamily: FontFamily1,
+          fontSize: FontSizeMedium,
+      }
+    },
+    MuiPickersYearSelection: {
+      container: {
+          fontFamily: FontFamily1,
+          fontSize: FontSizeMedium,
+      }
+    },
+    MuiPickersMonth:{
+      selected:{
+          color: colorBlue1,
+      }
+    },
+    MuiPickersCalendarHeader: {
+      switchHeader: {
+        // backgroundColor: colorBlue1,
+        // color: "white",
+        fontSize: FontSizeSmall,
+        fontFamily: FontFamily1
+      },
+    },
+    MuiTypography: {
+      colorPrimary:{
+          color: colorBlue1,
+      }
+    },
+    MuiPickersDay: {
+      day: {
+        color: colorGray1,
+        fontSize: FontSizeSmall,
+        fontFamily: FontFamily1
+      },
+      isSelected: {
+        backgroundColor: colorBlue1,
+        fontSize: FontSizeSmall,
+        fontFamily: FontFamily1
+      },
+      current: {
+        color: colorBlue1,
+        fontSize: FontSizeSmall,
+        fontFamily: FontFamily1
+      },
+    },
+    MuiPickersModal: {
+      dialogAction: {
+        color: colorBlue1,
+        fontSize: FontSizeSmall,
+        fontFamily: FontFamily1
+      },
+    },
+  },
+  }
+
+export function frecuencyType (type)
+ {
+    switch (type) {
+      case 'B':{
+          const frequency="Al vencimiento"
+          return frequency;
+      }
+      case 'W' :{
+        const frequency="Semanal"
+        return frequency;
+      }
+      case 'F' :{
+        const frequency="Quincenal"
+        return frequency;
+      }
+      case 'M' :{
+        const frequency="Mensual"
+        return frequency;
+      }
+      default:{
+        const frequency="Mensual"
+        return frequency;
+      }
+    }
+  }
+  /* Gender types */
+export const GenderTypes  = [
+    {type:'Femenino',   value:'F'},
+    {type:'Masculino',  value:'M'},
+  ];
+  
+  /* Occupation types */
+export const OccupationTypes  = [
+    {type:'Soy empleado',       value:'Empleado'},
+    {type:'Soy independiente',  value:'Independiente'},
+    {type:'Soy pensionado',     value:'Pensionado'},
+    {type:'Soy desempleado',    value:'Desempleado'},
+  ];
+  
+  /* Id types */
+export const IdTypes  = [
+    {type:'Cédula de Ciudadanía',   value:'CC'},
+    {type:'Cédula de Extranjería',  value:'CE'},
+  ];
+
+  /* Phone types */
+export const PhoneTypes  = [
+    {type:'Celular',          value:'CP'},
+    {type:'Teléfono fíjo',    value:'HL'},
+    {type:'Teléfono laboral', value:'WL'},
+  ];
+
+  /* Address types */
+export const AddressTypes  = [
+    {type:'Dirección residencial', value:'HA'},
+    {type:'Dirección laboral',     value:'WA'},
+  ];
+
+  /* Bank names - Colombia */
+export const bankNameList = [
+    {code:"40", data:"Banco Agrario"}, 
+    {code:"52", data:"Banco AV Villas"}, 
+    {code:"32", data:"Banco Caja Social"}, 
+    {code:"19", data:"Banco Colpatria"}, 
+    {code:"06", data:"Banco Corpbanca S.A."}, 
+    {code:"51", data:"Banco Davivienda"}, 
+    {code:"01", data:"Banco de Bogotá"}, 
+    {code:"23", data:"Banco de Occidente"}, 
+    {code:"12", data:"Banco GNB Sudameris"}, 
+    {code:"60", data:"Banco Pichincha S.A."}, 
+    {code:"02", data:"Banco Popular"}, 
+    {code:"58", data:"Banco Procredit"}, 
+    {code:"07", data:"Bancolombia"}, 
+    {code:"61", data:"Bancoomeva S.A."}, 
+    {code:"13", data:"BBVA Colombia S.A."}, 
+    {code:"09", data:"Citibank"}, 
+    {code:"14", data:"Itaú"}, 
+    {code:"62", data:"Banco Falabella"}
+  ];
+
+  /* Account types */
+export const AccountTypes  = [
+    {type:'Ahorros',   value:'AHO'},
+    {type:'Corriente',  value:'CTE'},
+  ];
+
+export const MemberTypes =[
+  {type: 'Persona Natural', value: '"M"'},
+  {type: 'Persona Jurídica', value: '"C"'}
+]
+  
+export function defineName(type, constant, description) {
+  if(type=== 'l'){
+    switch (constant) {
+      case 'A':{
+          const loanStatus="Activo"
+          return loanStatus;
+      }
+      case 'P' :{
+          const loanStatus="Pendiente"
+          return loanStatus;
+      }
+      case 'M' :{
+          const loanStatus="Mora"
+          return loanStatus;
+      }
+      case 'C' :{
+          const loanStatus="Pagado"
+          return loanStatus;
+      }
+      case 'Z' :{
+          const loanStatus="Cerrado"
+          return loanStatus;
+      }
+      case 'D' :{
+          const loanStatus="Borrado"
+          return loanStatus;
+      }
+      default : {
+          const loanStatus='Sin estado'
+          return loanStatus;
+      }
+    }
+  }else if(type==='t'){
+    switch (constant) {
+      case 'PYMT':{
+          const transactionType="Pago"
+          return transactionType;
+      }
+      case 'REV' :{
+          const transactionType="Reversión"
+          return transactionType;
+      }
+      case 'DISB' :{
+          const transactionType="Desembolso"
+          return transactionType;
+      }
+      case 'A' :{
+          const transactionStatus="Aprobado"
+          return transactionStatus;
+      }
+      case 'P' :{
+          const transactionStatus="Pendiente"
+          return transactionStatus;
+      }
+      case 'R' :{
+          const transactionStatus="Rechazado"
+          return transactionStatus;
+      }
+      default : {
+          const transactionType=null
+          return transactionType;
+      }
+    }
+  }else if(type === 'r'){
+    switch (constant) {
+      case 'I':{
+          const transactionType="Iniciado"
+          return transactionType;
+      }
+      case 'P' :{
+          const transactionType="Pendiente"
+          return transactionType;
+      }
+      case 'A' :{
+          const transactionType="Aprobado"
+          return transactionType;
+      }
+      case 'N' :{
+          const transactionStatus="Negado"
+          return transactionStatus;
+      }
+      case 'S' :{
+          const transactionStatus="En estudio"
+          return transactionStatus;
+      }
+      case 'R' :{
+          const transactionStatus="Rechazado"
+          return transactionStatus;
+      }
+      case 'D' :{
+        const transactionStatus="Borrado"
+        return transactionStatus;
+      }
+      case 'E' :{
+        const transactionStatus="En desembolso"
+        return transactionStatus;
+      }
+      case 'LoanRequest' :{
+        const transactionStatus="Solicitudes"
+        return transactionStatus;
+      }
+      case 'Loan' :{
+        const transactionStatus="Préstamos"
+        return transactionStatus;
+      }
+      default : {
+          const transactionType=null
+          return transactionType;
+      }
+    }
+  }else if(type === "c"){
+    switch (constant) {
+      case 'PR':{
+          const ChargesName="Capital"
+          return ChargesName;
+      }
+      case 'CH' :{
+        if(description==='Administrative'){
+          const ChargesName="Administrativos"
+          return ChargesName;
+        }
+        else if(description==='TechPlatform'){
+            const ChargesName="Plataforma"
+            return ChargesName;
+        }
+        else if(description==='Insurance'){
+            const ChargesName="Seguro"
+            return ChargesName;
+        }
+        else if(description==='Renew'){
+            const ChargesName="Renovación"
+            return ChargesName;
+        }
+        else if(description==='Factor'){
+            const ChargesName="Cobranza"
+            return ChargesName;
+        }
+        else{
+            const ChargesName="Otros"
+            return ChargesName;
+        }   
+      }
+      case 'NI' :{
+          const ChargesName="Interés"
+          return ChargesName;
+      }
+      case 'PI' :{
+          const ChargesName="Interés Mora"
+          return ChargesName;
+      }
+      default : {
+          const ChargesName="Otros"
+          return ChargesName;
+      }
+  }
+  }
+} 
+
+  /* Labels */
+export const LoginLabels                 = {Title1:'Ingresar a',Title2:'MICREDI',Username:'Cédula o Email',Password:'Contraseña'};
+export const PersonLabels                = [
+    {Title1:'Información',Title2:'personal',Name:'Tu primer nombre',Name2:'Tu segundo nombre',LastName:'Tu primer apellido',LastName2:'Tu segundo apellido',Gender:'Tu género',DOB:'Tu fecha de nacimiento',POB:'Pais de nacimiento',ROB:'Departamento de nacimiento',COB:'Ciudad de nacimiento'},
+    {Title1:'Información',Title2:'personal',Name:'Primer nombre',Name2:'Segundo nombre',LastName:'Primer apellido',LastName2:'Segundo apellido',Gender:'Género',DOB:'Fecha de nacimiento',POB:'Pais de nacimiento',ROB:'Departamento de nacimiento',COB:'Ciudad de nacimiento'},
+  ];
+export const JobLabels                   = [
+    {Title1:'Información',Title2:'laboral',Profession:'Tu profesión',Occupation:'Tu ocupación', Income:'Tus Ingresos Mesuales'},
+    {Title1:'Información',Title2:'laboral',Profession:'Profesión',Occupation:'Ocupación', Income:'Ingresos Mesuales'},
+  ];
+export const IdentificationLabels        = [
+    {Title1:'Información',Title2:'de identificación',IDType:'Tipo de identificación',IDNumber:'Tu número de identificación',IDIssueDate:'Fecha de expedición',IDExpirationDate:'Fecha de expiración',IDIssueCountry:'Pais de expedición',IssueRegion:'Departamento de expedición', IDIssueCity:'Ciudad de expedición'},
+    {Title1:'Información',Title2:'de identificación',IDType:'Tipo de identificación',IDNumber:'Número de identificación',IDIssueDate:'Fecha de expedición',IDExpirationDate:'Fecha de expiración',IDIssueCountry:'Pais de expedición',IssueRegion:'Departamento de expedición', IDIssueCity:'Ciudad de expedición'},
+  ];
+export const AccountLabels               = [
+    {Title1:'Información de',Title2:'Tu CREDI cuenta',Email:'Tu correo electrónico',Password:'Tu contraseña'},
+    {Title1:'Información de',Title2:'la cuenta',Email:'Correo electrónico',Password:'Contraseña'},
+  ];
+export const RolLabels=
+    {Title1: 'Rol del usuario'};
+export const BankLabels                  = [
+    {Title1:'Información',Title2:'bancaria',BankName:'Tu banco',AccountType:'Tipo de cuenta',AccountNumber:'Tu número de cuenta', Region:'Departamento de registro de la cuenta', City:'Ciudad de registro de la cuenta'},
+    {Title1:'Información',Title2:'bancaria',BankName:'Banco',AccountType:'Tipo de cuenta',AccountNumber:'Número de cuenta', Region:'Departamento de registro de la cuenta', City:'Ciudad de registro de la cuenta'},
+  ];
+export const PhoneLabels                 = [
+    {Title1:'Tus',Title2:'Teléfonos',PhoneNumber0:'Tu número de celular',PhoneNumber:'Tu número de teléfono',},
+    {Title1:'El',Title2:'Teléfono',PhoneNumber0:'Número de celular',PhoneNumber:'Número de teléfono',},
+  ];
+export const AddressLabels               = [
+    {Title1:'Tus',Title2:'Direcciones',Address:'Tu dirección',AddressRegion:'Departamento de residencia',AddressCity:'Ciudad de residencia',AddressPrimary:'¿Es esta tu dirección principal? ',},
+    {Title1:'La',Title2:'Dirección',Address:'Dirección',AddressRegion:'Departamento',AddressCity:'Ciudad',AddressPrimary:'¿Dirección principal? ',},
+  ];
+export const EmailLabels                 = {Title1:'Correo',Title2:'electrónico',Email:'Correo electrónico',EmailPrimary:'¿Correo electrónico principal? ',};
+export const InvestorLabels              = {Title1:'Información del',Title2:'inversionista',Broker:'Broker Id',AvailableBalance:'Available balance',SpreadRate:'Spread rate',};
+export const CompanyLabels               = {Title1:'Información de',Title2:'la empresa',CompanyName:'Nombre de la empresa',CompanyCIIUCode:'CIIU de la empresa',CompanyType:'Tipo de empresa',};
+export const CompanyIdentificationLabels = {Title1:'Información',Title2:'de identificación',IDNumber:'NIT de la empresa',IDIssueDate:'Fecha de expedición',IDExpirationDate:'Fecha de expiración',};
+
+  /* Form step button text */
+export const FormButtonTypes       = [
+    {   //New Member
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar mi info personal',Next_1:'Guardar mi info de contacto',Next_2:'Guardar mi info bancaria', 
+    },{ //Member
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar mi info personal',Next_1:'Guardar mi info de contacto',Next_2:'Guardar mi info bancaria', 
+    },{ //
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar info personal',Next_1:'Guardar info de contacto',Next_2:'Guardar info bancaria', 
+    },{ //
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar info personal',Next_1:'Guardar info de contacto',Next_2:'Guardar info bancaria', 
+    },{ //
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar info personal',Next_1:'Guardar info de contacto',Next_2:'Guardar info bancaria', 
+    },{ //
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar info personal',Next_1:'Guardar info de contacto',Next_2:'Guardar info bancaria', 
+    },{ //Member from AdminArea
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar info personal',Next_1:'Guardar info de contacto',Next_2:'Guardar info bancaria', 
+    },
+    { //Company from AdminArea
+      Prev:'Volver',Next:'Guardar mis capturas',Next_0:'Guardar Representante',Next_1:'Guardar Empresa', 
+    },
+  ];
+
+
+  
+ export const ConditionOperatorAND = '%26';
+ export const ConditionOperatorOR = '%7C';

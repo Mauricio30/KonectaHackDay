@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>THUNDERCATS</p>
+        <p>THUNDERHACKS RECONOCIMIENTO DE IDENTIDAD Y ENVIO DE CONTRATO</p>
       </header>
       <Login/>
     </div>
