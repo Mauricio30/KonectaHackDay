@@ -3,7 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import Form from './form'
+import Form from './form';
+import WebcamResponsive from './WebcamResponsiveDialog';
 
 class login extends React.Component {
     constructor(props){
@@ -13,9 +14,14 @@ class login extends React.Component {
         isLogin:true,
         loginmessage:'',
         password:'',
-        isOpen: false
+        isOpen: false,
+        closed: false,
+        typecapture: 'toma1'
         }
        }
+handleClose=()=>{
+this.setState({closed: false})
+}
 
        handleClick(event){
          console.log("event",this.state);
@@ -43,7 +49,7 @@ class login extends React.Component {
           return (
             <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column'}}>
                <MuiThemeProvider>
-
+               <WebcamResponsive {...this.props} handleClose={this.handleClose} closed={this.state.closed} typecapture={this.state.typecapture}/>
                {this.state.isOpen?
                <Form/>:
                <div>
@@ -69,7 +75,7 @@ class login extends React.Component {
               </div>
               }
                   <br/>
-                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen})}/>
+                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen, closed: true})}/>
                   <br/>
               </MuiThemeProvider>
             </div>

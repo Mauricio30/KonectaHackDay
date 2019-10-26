@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import * as constants from '. /Constants';
 import FlatButton   from 'material-ui/FlatButton';
-import BGAyuda               from '../assets/ayudacambloqueada.jpg';
-import marco_cedula          from '../assets/marco_cedula.png';
-import marco_cedula2         from '../assets/marco_cedula2.png';
-import sugerencia_pantalla   from '../assets/cambiopantalla.png';
+import BGAyuda               from './assets/ayudacambloqueada.jpg';
+import marco_cedula          from './assets/marco_cedula.png';
+import marco_cedula2         from './assets/marco_cedula2.png';
+import sugerencia_pantalla   from './assets/cambiopantalla.png';
 import Webcam       from './Cam';
 //import Webcam from "react-webcam";
 
@@ -122,8 +121,6 @@ handleChangeCam = () => {
 
 
     const FlatButtonLabel         = {
-      borderRadius              : '100px', 
-      fontFamily                : constants.FontFamily2,
       fontWeight                : '300',
       textTransform             : 'initial',
       fontSize                  : '12px',
@@ -133,36 +130,35 @@ handleChangeCam = () => {
     
     const FlatButtonLabelStyle  = {
       ...FlatButtonLabel,
-      color                     : constants.colorBlue1,
+      color                     : 'blue',
     }
 
 const FlatButtonCloseLabel         = {
     width: '50px',
     height: '50px',
-    borderRadius: '50%',
-    background: constants.colorBlue1,    
-    color: constants.colorWhite,
+    background: 'blue',    
+    color: 'white',
 
 }
 
 const    FButtonContinue= (
   <FlatButton
-  labelStyle        = {{...FlatButtonLabelStyle, alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:constants.colorWhite, fontStyle: 'italic'}}
-  hoverColor        = {constants.colorBlue2}
-  backgroundColor   = {constants.colorBlue1}
+  labelStyle        = {{ alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:'white', fontStyle: 'italic'}}
+  hoverColor        = 'blue'
+  backgroundColor   = 'blue'
   onClick = {this.continuar}
-  rippleColor       = {constants.colorGreen1}
+  rippleColor       = 'green'
   primary           = {true}
   label             = {'Continuar'}
   />)
 
   const FButtonCam = (
     <FlatButton
-    labelStyle        = {{...FlatButtonLabelStyle, alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:constants.colorWhite, fontStyle: 'italic'}}
-    hoverColor        = {constants.colorBlue2}
-    backgroundColor   = {constants.colorBlue1}
+    labelStyle        = {{ alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:'white', fontStyle: 'italic'}}
+    hoverColor        = 'blue'
+    backgroundColor   = 'blue'
     onClick = {this.abrircam}
-    rippleColor       = {constants.colorGreen1}
+    rippleColor       = 'green'
     primary           = {true}
     label             = {'Mejorar foto'}
     />
@@ -172,29 +168,19 @@ const FButtonclose = (
   <FlatButton
   labelStyle             = {{...FlatButtonCloseLabel}}
   onClick = {this.captureclosedialog}
-  rippleColor       = {constants.colorGreen1}
+  rippleColor       = 'green'
   primary           = {true}
   label             = {'X'}
   />
       )
 
-  // const FButton = (
-  //   <FlatButton
-  //   labelStyle        = {{...FlatButtonLabelStyle, alignItems: 'center',textTransform:'uppercase', fontFamily:'Kanit', fontWeight:'800', color:constants.colorWhite, fontStyle: 'italic'}}
-  //   hoverColor        = {constants.colorBlue2}
-  //   backgroundColor   = {constants.colorBlue1}
-  //   onClick = {this.captureclose}
-  //   rippleColor       = {constants.colorGreen1}
-  //   primary           = {true}
-  //   label             = {'Tomar foto'}
-  //   />
-  //       )
+
     return (
       <div>
       
         <Dialog
           fullScreen={fullScreen}
-          open={this.props.open}
+          open={this.props.closed}
           onClose={this.props.handleClose}
           style={{width:'100%', height:'auto', overflowY: 'hidden',overflowX: 'hidden', scrollSnapTypeX: 'hidden', maxWidth: '100%'}}
           contentstyle={{height: 'auto', overflow: 'hidden'}}>
@@ -208,6 +194,7 @@ const FButtonclose = (
 
                           <Webcam {...this.props} {...this.state} previewImage={this.previewImage} cerrarcam={this.cerrarcam} captureclosedialog={this.captureclosedialog}
                             videoConstraints={videoconstraints}
+                            typecapture={this.state.typecapture}
                             audio={false}
                             height='auto'
                             ref={this.setRef}
@@ -220,7 +207,6 @@ const FButtonclose = (
             {this.state.checkphoto === false?
               <div style={{textAlign: 'right', justifyContent:'right',marginLeft: 'auto', marginRight: 'auto',float: 'left',position: 'absolute', width: '100%', height: 'auto'}}>  
                   {FButtonclose} 
-                  {/* <p style={{textAlign: 'center', justifyContent:'center', width: '100%', fontSize: '10px', fontFamily: constants.FontFamily2,color: constants.colorWhite,  backgroundColor: '#00000085'}}>{this.props.tittletextcapture+': '+this.props.textcapture}</p> */}
                     <div style={{textAlign: 'center', justifyContent:'center',marginLeft: 'auto', marginRight: 'auto',float: 'left',position: 'absolute', width: '100%', height: 'auto'}}>
                             {this.props.typecapture === 'toma1'?
                             <img  style={{maxWidth: '100%', overflow: 'hidden', margin: '0 auto', padding: 0, position: 'relative'}} src={marco_cedula} alt="" />
@@ -242,7 +228,7 @@ const FButtonclose = (
               </div>     
                 :
                 <div style={{textAlign: 'right', justifyContent:'right',marginLeft: 'auto', marginRight: 'auto',float: 'left',position: 'absolute', width: '100%', height: 'auto'}}>  
-                    <p style={{textAlign: 'center', justifyContent:'center', width: '100%', fontSize: '14px', fontFamily: constants.FontFamily2,color: constants.colorWhite,  backgroundColor: '#000000'}}>{this.props.textcapture}</p>    {FButtonCam}   {FButtonContinue}  {FButtonclose} 
+                    <p style={{textAlign: 'center', justifyContent:'center', width: '100%', fontSize: '14px',color: 'white',  backgroundColor: '#000000'}}>{this.props.textcapture}</p>    {FButtonCam}   {FButtonContinue}  {FButtonclose} 
                 </div> 
                 }
         </Dialog>
