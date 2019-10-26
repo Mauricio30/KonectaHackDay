@@ -53,7 +53,6 @@ class ResponsiveDialog extends React.Component {
     }
 
     previewImage = (imageSrc) => {
-      this.props.handlechangeimage(imageSrc);
       this.setState({preview: imageSrc});
     }
     cerrarcam = () =>{

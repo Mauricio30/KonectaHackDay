@@ -15,14 +15,9 @@ class login extends React.Component {
         loginmessage:'',
         loginmessageregister:'',
         password:'',
-<<<<<<< HEAD
-        nombre:'',
-        isOpen: false
-=======
         isOpen: false,
         closed: false,
         typecapture: 'toma1'
->>>>>>> 5d3ac79270d7841a3af4feb35451788435f1f369
         }
        }
 handleClose=()=>{
@@ -109,11 +104,7 @@ this.setState({closed: false})
               </div>
               }
                   <br/>
-<<<<<<< HEAD
-                  <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-=======
                   <RaisedButton label={this.state.isOpen?"Registrarse":"Iniciar Sesión"} primary={true} style={style} onClick={(event) => this.setState({isOpen: !this.state.isOpen, closed: true})}/>
->>>>>>> 5d3ac79270d7841a3af4feb35451788435f1f369
                   <br/>
               </MuiThemeProvider>
             </div>
